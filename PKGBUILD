@@ -18,9 +18,13 @@ package() {
 }
 
 post_install(){
+    cp /usr/share/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource.old
     mv /usr/share/gnome-shell/parch-gnome-shell-theme.gresource  /usr/share/gnome-shell/gnome-shell-theme.gresource 
     chmod 544 /usr/share/gnome-shell/gnome-shell-theme.gresource
     chmod 544 /etc/dconf/db/gdm.d/95-parch-gdm-config
     chmod 544 /etc/gdm/gdm-login-logo
+}
 
+pre_remove(){
+    mv /usr/share/gnome-shell/gnome-shell-theme.gresource.old /usr/share/gnome-shell/gnome-shell-theme.gresource
 }
